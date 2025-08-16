@@ -15,7 +15,14 @@
     "typecheck": "tsc --noEmit",
     "db:migrate": "prisma migrate dev",
     "db:generate": "prisma generate",
-    "preview": "vite preview"
+    "db:deploy": "prisma migrate deploy",
+    "preview": "vite preview",
+    "docker:build": "docker build -t taskflow-app .",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:dev": "docker-compose --profile dev up",
+    "docker:prod": "docker-compose up --build"
   },
   "dependencies": {
     "@prisma/client": "^4.11.0",
