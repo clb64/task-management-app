@@ -21,6 +21,9 @@ RUN npx prisma generate
 FROM node:18-alpine AS production
 WORKDIR /app
 
+# Install OpenSSL and other dependencies
+RUN apk add --no-cache openssl
+
 # Install production dependencies
 COPY package*.json ./
 RUN npm ci --only=production && npm cache clean --force
@@ -29,16 +32,17 @@ RUN npm ci --only=production && npm cache clean --force
 COPY --from=frontend-builder /app/dist ./dist
 
 # Copy built backend from backend-builder stage
-COPY --from=backend-builder /app/dist/server ./dist/server
+COPY --from=backend-builder /app/dist ./dist
 COPY --from=backend-builder /app/node_modules/.prisma ./node_modules/.prisma
 COPY --from=backend-builder /app/node_modules/@prisma ./node_modules/@prisma
 
 # Copy prisma schema for migrations
 COPY prisma ./prisma
 
-# Create non-root user
+# Create non-root user and set permissions
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S taskflow -u 1001
+RUN chown -R taskflow:nodejs /app
 USER taskflow
 
 # Expose port
@@ -49,4 +53,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD node -e "require('http').get('http://localhost:5000/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"
 
 # Start the application
-CMD ["node", "dist/server/index.js"]
+CMD ["node", "dist/index.js"]

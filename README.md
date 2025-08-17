@@ -44,6 +44,11 @@ A full-stack task management application built with React, TypeScript, Node.js, 
 **OR**
 
 - Docker and Docker Compose (for containerized setup)
+- Note: If you encounter Docker permission issues, you may need to add your user to the docker group:
+  ```bash
+  sudo usermod -aG docker $USER
+  ```
+  Then log out and log back in.
 
 ## Installation & Setup
 
@@ -58,10 +63,10 @@ A full-stack task management application built with React, TypeScript, Node.js, 
 2. **Start with Docker Compose**
    ```bash
    # Production mode
-   docker-compose up -d
+   docker compose up -d
    
    # Development mode (with hot reload)
-   docker-compose --profile dev up -d
+   docker compose --profile dev up -d
    ```
 
    The application will be available at:
@@ -70,7 +75,10 @@ A full-stack task management application built with React, TypeScript, Node.js, 
 
 3. **Stop the application**
    ```bash
-   docker-compose down
+   docker compose down
+   
+   # To remove all data (including database)
+   docker compose down -v
    ```
 
 ### Option 2: Manual Setup
@@ -108,10 +116,12 @@ A full-stack task management application built with React, TypeScript, Node.js, 
 ## Available Scripts
 
 ### Docker Commands
-- `docker-compose up -d` - Start in production mode
-- `docker-compose --profile dev up -d` - Start in development mode
-- `docker-compose down` - Stop all services
-- `docker-compose logs -f` - View application logs
+- `docker compose up -d` - Start in production mode
+- `docker compose --profile dev up -d` - Start in development mode  
+- `docker compose down` - Stop all services
+- `docker compose down -v` - Stop services and remove volumes (deletes database)
+- `docker compose logs -f` - View application logs
+- `docker compose build --no-cache` - Rebuild images from scratch
 
 ### NPM Scripts (Manual Setup)
 - `npm run dev` - Start both client and server in development mode

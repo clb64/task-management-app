@@ -1,3 +1,27 @@
+ou need to configure git with your identity first, then commit and
+  push:
+
+  # Set your git identity (run once)
+  git config user.email "your-email@example.com"
+  git config user.name "Your Name"
+
+  # Then commit the staged changes
+  git commit -m "Update README.md with Docker startup instructions"
+
+  # Push to GitHub
+  git push origin main
+
+  Replace "your-email@example.com" and "Your Name" with your actual
+  email and name.
+
+
+
+
+
+
+
+
+
 Task Management App Complete! 🎉
 
   I've successfully built a complete full-stack task management application according to the
