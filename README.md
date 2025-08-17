@@ -15,7 +15,8 @@ A full-stack task management application built with React, TypeScript, Node.js, 
 
 ### Frontend
 - **React 18** - Modern React with hooks and context
-- **TypeScript** - Type safety and better developer experience
+- **TypeScript
+** - Type safety and better developer experience
 - **Tailwind CSS** - Utility-first CSS framework
 - **Vite** - Fast build tool and dev server
 - **React Router** - Client-side routing

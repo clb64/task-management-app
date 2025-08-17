@@ -1,3 +1,20 @@
+Since you pushed directly to the main branch, the changes simply get added to the
+   existing history - no merge needed. They don't overwrite; they extend the commit
+   history.
+
+  However, if multiple people are working on the project, it's better practice to:
+
+  1. Create a feature branch: git checkout -b feature/docker-fixes
+  2. Make your changes and commit
+  3. Push the branch: git push -u origin feature/docker-fixes
+  4. Create a pull request on GitHub
+  5. Review and merge the PR
+
+  This workflow prevents conflicts and allows code review. For solo projects,
+  pushing directly to main (like you just did) is perfectly fine.
+
+
+
 ou need to configure git with your identity first, then commit and
   push:
 
