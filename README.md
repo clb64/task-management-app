@@ -41,7 +41,39 @@ A full-stack task management application built with React, TypeScript, Node.js, 
 - PostgreSQL database
 - npm or yarn package manager
 
+**OR**
+
+- Docker and Docker Compose (for containerized setup)
+
 ## Installation & Setup
+
+### Option 1: Docker Setup (Recommended)
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd task-management-app
+   ```
+
+2. **Start with Docker Compose**
+   ```bash
+   # Production mode
+   docker-compose up -d
+   
+   # Development mode (with hot reload)
+   docker-compose --profile dev up -d
+   ```
+
+   The application will be available at:
+   - Production: http://localhost:3000
+   - Development: Frontend at http://localhost:3000, Backend at http://localhost:5000
+
+3. **Stop the application**
+   ```bash
+   docker-compose down
+   ```
+
+### Option 2: Manual Setup
 
 1. **Clone the repository**
    ```bash
@@ -75,6 +107,13 @@ A full-stack task management application built with React, TypeScript, Node.js, 
 
 ## Available Scripts
 
+### Docker Commands
+- `docker-compose up -d` - Start in production mode
+- `docker-compose --profile dev up -d` - Start in development mode
+- `docker-compose down` - Stop all services
+- `docker-compose logs -f` - View application logs
+
+### NPM Scripts (Manual Setup)
 - `npm run dev` - Start both client and server in development mode
 - `npm run dev:client` - Start only the frontend development server
 - `npm run dev:server` - Start only the backend development server
